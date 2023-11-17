@@ -27,6 +27,7 @@ jobs:
           target: "/opt/tomcat/webapps"
 
   SaveToIPFS:
+    needs: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
