@@ -66,6 +66,6 @@ jobs:
         run: |
           echo ${{ secrets.EC2_SSH_KEY }} > private_key.pem
           ssh -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }} -fN -L 0.0.0.0:3307:127.0.0.1:3306
-          mysqldump -ucnam -P3307 -p"${{ secrets.MYSQLDUMP_PASSWORD }}" films > sauvegarde_films.sql
+          mysqldump -u${{ secrets.MYSQLDUMP_PASSWORD }} -P3307 -p"${{ secrets.MYSQLDUMP_PASSWORD }}" films > sauvegarde_films.sql
           ls
         shell: alpine.sh --root {0}
